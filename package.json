@@ -1,0 +1,43 @@
+{
+    "name": "808notes",
+    "version": "1.0.0",
+    "description": "the right choice for all your noting needs",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron ."
+    },
+    "keywords": [
+        "davman808",
+        "808",
+        "notes",
+        "808notes",
+        "808universe",
+        "glassdragon"
+    ],
+    "author": {
+        "name": "davman808",
+        "email": "da.seyder@gmail.com"
+    },
+    "homepage": "https://github.com/808universe/glassdragon",
+    "repository": {
+        "url": "https://github.com/808universe/glassdragon"
+    },
+    "license": "ISC",
+    "dependencies": {
+        "electron": "^15.3.0",
+        "electron-builder": "^22.13.1"
+    },
+    "build": {
+        "appId": "dev.davman808.808universe.glassdragon",
+        "linux": {
+            "category": "notes",
+            "target": "deb"
+        },
+        "electronDownload": {
+            "version": "1.0.0"
+        },
+        "electronVersion": "15.3.0",
+        "nodeVersion": "current",
+        "postinstall": "electron-builder install-app-deps"
+    }
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+        <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>808notes</title>
+    </head>
+    <body>
+        <input type="text" name="note-title" id="note-title" placeholder="Type title here...">
+        <label for="note-title">Title</label>
+        <br>
+        <textarea name="note-body" id="note-body" cols="30" rows="10" placeholder="Type your note here, then click Save..."></textarea>
+        <label for="note-body">Note</label>
+        <br>            
+        <button type="submit" onclick="handleSaveNoDownload();" class="btn submit" id="submit-btn">Save</button>
+        <button type="submit" onclick="handleSave()" id="submit&dl-btn" class="btn download">Save and Download as .json</button>
+        <br>
+        <button type="button" onclick="handleUpload()" id="loadfromjson" class="btn loadfronjson">Load from uploaded .json</button>
+        <br>
+        <input type="file" name="load-notes_input" id="load-notes_input" accept="text/plain, application/json">
+        <label for="load-notes_input">If you have saved your notes as a .json file, you can upload it here to load them</label>
+        <script>
+            var notes_array = new Array();
+            var notes_array_string = JSON.stringify(notes_array);
+            notes_array_string = [notes_array_string];
+            var notes_array_blob = new Blob(notes_array_string, { type: "text/plain;charset=utf-8" });
+            function handleSave() {
+                const note = new Object();
+                note.title = document.getElementById('note-title').value;
+                note.body = document.getElementById('note-body').value;
+                notes_array.push(note)
+                console.log(notes_array_blob);
+
+                function download(content, fileName, contentType) {
+                const a = document.createElement("a");
+                a.href = URL.createObjectURL(new Blob([JSON.stringify(notes_array, null, 2)], {type: "text/plain"}));
+                a.setAttribute("download", "notes.json");
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                }
+                download(notes_array, 'notes.json', 'text/plain');
+            }
+            function handleSaveNoDownload() {
+                const note = new Object();
+                note.title = document.getElementById('note-title').value;
+                note.body = document.getElementById('note-body').value;
+                notes_array.push(note)
+                console.log(notes_array);
+
+                    /*function download(content, fileName, contentType) {
+                        var a = document.createElement("a");
+                        var file = new Blob([content], { type: contentType });
+                        a.href = URL.createObjectURL(file);
+                        a.download = fileName;
+                        a.click();
+                    }
+                    download(notes, 'notes.json', 'text/plain');*/
+                }
+            function handleUpload() {
+                var notes_loadedfromJSON = $.getJSON('notes.json')
+                console.log(notes_loadedfromJSON)
+            }
+            if(document.getElementById('load-notes_input').value !== "") {
+                handleUpload()
+            }
+            //console.log(something)
+        </script>
+    </body>
+</html>
