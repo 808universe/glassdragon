@@ -8,18 +8,24 @@
         <title>808notes</title>
     </head>
     <body>
-        <input type="text" name="note-title" id="note-title" placeholder="Type title here...">
         <label for="note-title">Title</label>
+        <input type="text" name="note-title" id="note-title" placeholder="Type title here...">
+        <label for="note-selecter">Your Notes</label>
+        <select name="note-selecter" id="note-selecter">
+            <option value="note1">Note1</option>
+            <option value="note2">Note2</option>
+            <option value="note3">Note3</option>
+        </select>
         <br>
         <textarea name="note-body" id="note-body" cols="30" rows="10" placeholder="Type your note here, then click Save..."></textarea>
         <label for="note-body">Note</label>
         <br>            
-        <button type="submit" onclick="handleSaveNoDownload();" class="btn submit" id="submit-btn">Save</button>
-        <button type="submit" onclick="handleSave()" id="submit&dl-btn" class="btn download">Save and Download as .json</button>
+        <button type="submit" onclick="handleSaveNoDownload();" class="pure-material-button-contained submit" id="submit-btn">Save</button>
+        <button type="submit" onclick="handleSave()" id="submit&dl-btn" class="pure-material-button-contained download">Save and Download as .json</button>
         <br>
-        <button type="button" onclick="handleUpload()" id="loadfromjson" class="btn loadfronjson">Load from uploaded .json</button>
+        <button type="button" onclick="handleUpload()" id="loadfromjson" class="pure-material-button-contained loadfronjson">Load from uploaded .json</button>
         <br>
-        <input type="file" name="load-notes_input" id="load-notes_input" accept="text/plain, application/json">
+        <input type="file" name="load-notes_input" id="load-notes_input" accept="text/plain, application/json" class="pure-material-button-contained upload">
         <label for="load-notes_input">If you have saved your notes as a .json file, you can upload it here to load them</label>
         <script>
             var notes_array = new Array();
