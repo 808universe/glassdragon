@@ -4,7 +4,10 @@
     "description": "the right choice for all your noting needs",
     "main": "main.js",
     "scripts": {
-        "start": "electron ."
+        "start": "electron .",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder",
+        "postinstall": "electron-builder install-app-deps"
     },
     "keywords": [
         "davman808",
@@ -23,7 +26,7 @@
         "url": "https://github.com/808universe/glassdragon"
     },
     "license": "ISC",
-    "dependencies": {
+    "devDependencies": {
         "electron": "^15.3.0",
         "electron-builder": "^22.13.1"
     },
@@ -37,7 +40,6 @@
             "version": "1.0.0"
         },
         "electronVersion": "15.3.0",
-        "nodeVersion": "current",
-        "postinstall": "electron-builder install-app-deps"
+        "nodeVersion": "current"
     }
 }
