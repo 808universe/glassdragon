@@ -11,6 +11,12 @@ let notes = {
 app.get('/', (req, res) => {
     res.send('welcome borther. if you see this afer opening up localhost:8080, that means, the server is up and running and ready to take your requests.')
 })
+app.get('/alive', (req, res) => {
+    res.sendStatus(200)
+})
+app.get('/ready', (req, res) => {
+    res.sendStatus(200)
+})
 app.get('/allnotes', (req, res) => {
     //res.sendFile('index.html', { root: __dirname })
     res.send(notes)
