@@ -34,18 +34,54 @@
             jquery.src = 'https://code.jquery.com/jquery-3.4.1.min.js'
             jquery.type = 'text/javascript'
             document.getElementsByTagName('head')[0].appendChild(jquery)
-            var notes_num = 0
             var notes_array = new Array();
             var notes_array_string = JSON.stringify(notes_array);
             notes_array_string = [notes_array_string];
-            const note = new Object();
+            const notes = new Object();
             var notes_array_blob = new Blob(notes_array_string, { type: "text/plain;charset=utf-8" });
+
+            function server_GET(noteSubUrl, getAllNotes) {
+                const http = new XMLHttpRequest
+                const url = 'http://localhost:8080'
+                const allNotesUrl = 'http://localhost:8080/allnotes'
+                var noteUrl = url + "/note/" + arguments[0]
+                if(getAllNotes == false) {
+                    http.open('GET', noteUrl)
+                }
+                else {
+                    http.open('GET', allNotesUrl)
+                }
+                http.send()
+
+                http.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        console.log(http.responseText)
+                    }
+                }
+            }
+            function server_POST() {
+                const http = new XMLHttpRequest
+                const url = 'http://localhost:8080'
+                const allNotesUrl = 'http://localhost:8080/allnotes'
+                var noteUrl = url + "/note/" + arguments[0]
+                if (getAllNotes == false) {
+                    http.open('GET', noteUrl)
+                }
+                else {
+                    http.open('GET', allNotesUrl)
+                }
+                http.send()
+
+                http.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        console.log(http.responseText)
+                    }
+                }
+            }
             function handleSave() {
-                notes_num++
-                note.number = notes_num
-                note.title = document.getElementById('note-title').value;
-                note.body = document.getElementById('note-body').value;
-                notes_array.push(note)
+                notes.title = document.getElementById('note-title').value;
+                notes.message = document.getElementById('note-body').value;
+                notes_array.push(notes)
                 console.log(notes_array_blob);
 
                 function download(content, fileName, contentType) {
@@ -59,11 +95,9 @@
                 download(notes_array, 'notes.json', 'text/plain');
             }
             function handleSaveNoDownload() {
-                notes_num++
-                note.number += notes_num
-                note.title = document.getElementById('note-title').value;
-                note.body = document.getElementById('note-body').value;
-                notes_array.push(note)
+                notes.title = document.getElementById('note-title').value;
+                notes.message = document.getElementById('note-body').value;
+                notes_array.push(notes)
                 console.log(notes_array);
 
                     /*function download(content, fileName, contentType) {
@@ -76,11 +110,11 @@
                     download(notes, 'notes.json', 'text/plain');*/
                 }
             function handleUpload() {
-                var notes_loadedfromJSON = $.getJSON('notes.json')
+                /*var notes_loadedfromJSON = $.getJSON(document.getElementById('load-notes_input').value)
                 //document.getElementById('dropdown_note1').innerHTML.replace('Note1', notes_loadedfromJSON.)
-                console.log(notes_loadedfromJSON)
+                console.log(notes_loadedfromJSON)*/
+                //server_GET('/note/sosig', false)
             }
-            console.log(fetch('http://localhost:8080/notes'))
         </script>
     </body>
 </html>
