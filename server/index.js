@@ -5,15 +5,13 @@ const app = express()
 app.use(express.json())
 const port = 8080;
 let notes = {
-    "testtitle": {
-        "body": "This note exists, and it will exist until I delete it."
-    }
+    "testtitle":  "This note exists, and it will exist until I delete it."
 }
 
 app.get('/', (req, res) => {
     res.send('welcome borther. if you see this afer opening up localhost:8080, that means, the server is up and running and ready to take your requests.')
 })
-app.get('/notes', (req, res) => {
+app.get('/allnotes', (req, res) => {
     //res.sendFile('index.html', { root: __dirname })
     res.send(notes)
 })
