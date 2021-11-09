@@ -4,7 +4,7 @@ metadata:
   name: glassdragon-nodeserver
 spec:
   rules:
-    - host: glassdragon-nodeserver.davman808.ecom.obi.solutions
+    - host: glassdragon-nodeserver.dev.platform.obi.solutions
       http:
         paths:
           - path: /
