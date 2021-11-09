@@ -12,4 +12,5 @@ first job:
     - mkdir -p ~/.kube
     - cp $kubeconfig ~/.kube/config
     - kubectl get ns
+    - kubectl config set-context --current --namespace=david-seyder
     - kubectl apply -f server/kubernetes/
