@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: glassdragon-nodeserver
+spec:
+  rules:
+    - host: glassdragon-nodeserver.davman808.ecom.obi.solutions
+      http:
+        paths:
+          - backend:
+              service:
+                name: glassdragon-nodeserver
+                port:
+                  name: http
