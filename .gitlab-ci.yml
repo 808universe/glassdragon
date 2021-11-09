@@ -1,19 +1,11 @@
-image:
-  name: alpine/k8s:1.20.7
-
 stages:
   - build
   - test
   - deploy
 
-variables:
-  # disable Docker TLS validation
-  DOCKER_TLS_CERTDIR: ""
-  # localhost address is shared by both the job container and the dind container (as they share the same Pod)
-  # So this configuration make the dind service as our Docker daemon when running Docker commands
-  DOCKER_HOST: "tcp://localhost:2375"
-
 first job:
+  image:
+    name: alpine/k8s:1.20.7
   stage: test
   tags:
     - default
@@ -24,16 +16,20 @@ first job:
     - kubectl config set-context --current --namespace=david-seyder
     - kubectl apply -f server/kubernetes/
 
-services:
-  - docker:stable-dind
-
 docker-build:
-  image: docker:stable
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
   stage: build
+  before_script:
+  - mkdir -p /kaniko/.docker
+  - cp ${docker_credentials} /kaniko/.docker/config.json
   tags: 
     - default
   script:
-      - cd server
-      - docker build -t hello .
-      - docker tag my-registry/hello:${CI_COMMIT_SHORT_SHA}
-      - docker push my-registry/hello:${CI_COMMIT_SHORT_SHA}
+    - > 
+      /kaniko/executor \
+        --context $CI_PROJECT_DIR/server/ \
+        --dockerfile $CI_PROJECT_DIR/server/Dockerfile \
+        --destination davman808/glassdragon-nodeserver:${CI_COMMIT_SHORT_SHA} \
+        --use-new-run=true;
