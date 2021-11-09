@@ -27,7 +27,7 @@ docker-build:
   tags: 
     - default
   script:
-    ./container-replacer.sh
+    sh /container-replacer.sh
     - > 
       /kaniko/executor \
         --force \
