@@ -1,5 +1,5 @@
 image:
-  name: alpine/k8s
+  name: alpine/k8s:1.20.7
 
 stages:
   - test
