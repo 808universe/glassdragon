@@ -15,7 +15,8 @@ spec:
     spec:
       containers:
         - name: glassdragon-nodeserver
-          image: davman808/v2
+          image: TO_BE_REPLACED
+
           livenessProbe:
             httpGet:
               path: /alive
