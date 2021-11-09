@@ -7,8 +7,11 @@ spec:
     - host: glassdragon-nodeserver.davman808.ecom.obi.solutions
       http:
         paths:
-          - backend:
+          - path: /
+            pathType: Prefix
+            backend:
               service:
                 name: glassdragon-nodeserver
                 port:
                   name: http
+          
