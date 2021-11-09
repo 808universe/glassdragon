@@ -5,6 +5,6 @@ sedStr="
   s!%%$1%%!$2!g;
 "
 echo "$sedStr"
-sed -r "$sedStr" server/Dockerfile > server/Dockerfile.new
-rm server/Dockerfile
-mv server/Dockerfile.new server/Dockerfile
+sed -r "$sedStr" .gitlab-ci.yml > .gitlab-ci.yml.new
+rm .gitlab-ci.yml
+mv .gitlab-ci.yml.new .gitlab-ci.yml
