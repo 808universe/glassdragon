@@ -12,3 +12,4 @@ first job:
     - mkdir -p ~/.kube
     - cp $kubeconfig ~/.kube/config
     - kubectl get ns
+    - kubectl apply -f server/kubernetes/
