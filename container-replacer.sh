@@ -5,6 +5,6 @@ sedStr="
   s!%%$1%%!$2!g;
 "
 echo "$sedStr"
-sed -r "$sedStr" docker/Dockerfile > docker/Dockerfile.new
-rm docker/Dockerfile
-mv docker/Dockerfile.new docker/Dockerfile
+sed -r "$sedStr" server/Dockerfile > server/Dockerfile.new
+rm server/Dockerfile
+mv server/Dockerfile.new server/Dockerfile
