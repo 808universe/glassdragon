@@ -5,6 +5,6 @@ sedStr="
   s!%%$1%%!$2!g;
 "
 echo "$sedStr"
-sed -r "$sedStr" .gitlab-ci.yml > .gitlab-ci.yml.new
-rm .gitlab-ci.yml
-mv .gitlab-ci.yml.new .gitlab-ci.yml
+sed -r "$sedStr" server/kubernetes/deployment.yaml > server/kubernetes/deployment.yaml.new
+rm server/kubernetes/deployment.yaml
+mv server/kubernetes/deployment.yaml.new server/kubernetes/deployment.yaml
