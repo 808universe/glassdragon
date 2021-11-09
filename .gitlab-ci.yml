@@ -10,5 +10,5 @@ first job:
     - default
   script:
     - mkdir -p ~/.kube
-    - cp kubeconfig ~/.kube/config
+    - cp $kubeconfig ~/.kube/config
     - kubectl get ns
