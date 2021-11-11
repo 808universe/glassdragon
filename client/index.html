@@ -42,8 +42,8 @@
 
             function server_GET(noteSubUrl, getAllNotes) {
                 const http = new XMLHttpRequest
-                const url = 'http://localhost:8080'
-                const allNotesUrl = 'http://localhost:8080/allnotes'
+                const url = 'http://glassdragon-nodeserver.dev.platform.obi.solutions/'
+                const allNotesUrl = 'http://glassdragon-nodeserver.dev.platform.obi.solutions/allnotes'
                 var noteUrl = url + "/note/" + arguments[0]
                 if(getAllNotes == false) {
                     http.open('GET', noteUrl)
@@ -61,8 +61,8 @@
             }
             function server_POST() {
                 const http = new XMLHttpRequest
-                const url = 'http://localhost:8080'
-                const allNotesUrl = 'http://localhost:8080/allnotes'
+                const url = 'http://glassdragon-nodeserver.dev.platform.obi.solutions/'
+                const allNotesUrl = 'http://glassdragon-nodeserver.dev.platform.obi.solutions/allnotes'
                 var noteUrl = url + "/note/" + arguments[0]
                 if (getAllNotes == false) {
                     http.open('GET', noteUrl)
