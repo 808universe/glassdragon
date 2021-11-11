@@ -14,7 +14,8 @@ first job:
     - cp $kubeconfig ~/.kube/config
     - kubectl get ns
     - kubectl config set-context --current --namespace=david-seyder
-    - sh container-replacer.sh "TO_BE_REPLACED" "davman808/glassdragon-nodeserver:${CI_COMMIT_SHORT_SHA}"
+    - ./container-replacer.sh "TO_BE_REPLACED" "davman808/glassdragon-nodeserver:${CI_COMMIT_SHORT_SHA}"
+    - cut server/kubernetes/deployment.yaml
     - kubectl apply -f server/kubernetes/
 
 docker-build:
