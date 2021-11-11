@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: glassdragon-nodeserver
-          image: TO_BE_REPLACED
+          image: TOBEREPLACED
 
           livenessProbe:
             httpGet:
