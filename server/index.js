@@ -48,5 +48,5 @@ app.post('/note/:title', (req, res) => {
     res.sendStatus(200)
 })
 app.listen(port, () => {
-    console.log('go here dumbass: glassdragon-nodeserver.dev.platform.obi.solutions')
+    console.log('go here dumbass: https://glassdragon-nodeserver.dev.platform.obi.solutions')
 })
